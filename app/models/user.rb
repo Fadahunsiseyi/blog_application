@@ -1,9 +1,11 @@
-class User < ApplicationRecord
-    has_many :posts
-    has_many :likes, through: :posts
-    has_many :comments, through: :posts
+# frozen_string_literal: true
 
-    def recent_posts
-        posts.order(created_at: desc).limit(3)
-    end
+class User < ApplicationRecord
+  has_many :posts
+  has_many :likes, through: :posts
+  has_many :comments, through: :posts
+
+  def recent_posts
+    posts.order(created_at: desc).limit(3)
+  end
 end
