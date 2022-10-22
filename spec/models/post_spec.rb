@@ -17,4 +17,8 @@ RSpec.describe Post, type: :model do
         subject.text = 'This is my first post'
         expect(subject).to be_valid
     end
+    it 'title should be present' do
+        subject.title = 'Hello'
+        expect(subject).to be_valid
+    end
     end
