@@ -8,10 +8,10 @@ RSpec.describe 'Posts', type: :request do
       expect(response).to render_template(:index)
     end
     it 'return correct response' do
-        expect(response).to have_http_status(:ok)
-      end
-      it 'body should includes correct placeholder text' do
-        expect(response.body).to include('HELLO RAILS index 2')
-      end
+      expect(response).to have_http_status(:ok)
+    end
+    it 'body should includes correct placeholder text' do
+      expect(response.body).to include('HELLO RAILS index 2')
+    end
   end
 end
