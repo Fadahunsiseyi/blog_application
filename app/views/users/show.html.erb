@@ -1,1 +1,32 @@
-<h2>HELLO RAILS show</h2>
+<div class = 'container'>
+  <h1 class = 'page_title'>User Details</h1>
+  <div class = 'user_container'>
+    <img class = 'user_profile' src= '<%= @user.photo %>' alt='photo comes here' width="100" height="100" />
+    <div class = 'info_holder' >
+      <h3><%= @user.name %></h3>
+      <p class = 'post_counter'>Post :  <%= @user.posts_counter %></p>
+    </div>
+  </div>
+  <div class = 'bio_container'>
+    <h4> Bio </h4>
+    <p><%= @user.bio %></p>
+  </div>
+  <h4>Recent posts </h4>
+    <% if @user.posts_counter > 0 %>
+      <% @posts = Post.where(author_id: @user.id) %>
+      <ul>
+        <% @user.recent_posts.each do |post| %>
+            <li class = 'post_container'>
+              <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class = 'user_clickable'>
+                <h3>#<%= post[:id] %> <%= post[:title] %> </h3>
+                <p> <%= post[:text] %> </p>
+                <p class = 'post_counter' >Comments:<%= post[:comments_counter] %> Likes: <%= post[:likes_counter] %> </p>
+              </a>
+            </li>
+        <% end %>
+      </ul>
+        <%= link_to "See all Posts", user_posts_path(@user), {:class => "see_all_post"}%>
+    <% else %>
+      <p>The list is empty for the posts by the user</p>
+    <% end %>
+</div>
