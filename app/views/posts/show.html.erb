@@ -10,7 +10,7 @@
     <p class = 'post_counter' >Comments:<%= @post[:comments_counter] %> Likes: <%= @post[:likes_counter] %> </p>
     <ul>
       <% @post.comments.each do |comment| %>
-        <li class = 'comment_holder'>
+        <li class = 'comment_holder'></li>
           <h5> <%= comment.author.name%></h5>
           <p><%= comment.text%> </p>
         </li>
