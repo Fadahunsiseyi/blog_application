@@ -1,1 +1,30 @@
-<h2>HELLO RAILS index 2</h2>
+<div class = 'container'>
+  <h1 class = 'page_title'>List of all Posts by <%= @user.name %></h1>
+  <div class = 'user_container'>
+    <img class = 'user_profile' src= '<%= @user.photo %>' alt='photo comes here' width="100" height="100" />
+      <div class = 'info_holder' >
+        <h3><%= @user.name %></h3>
+        <p class = 'post_counter'>Post :  <%= @user.posts_counter %></p>
+      </div>
+  </div>
+  <% @posts = Post.where(author_id: @user.id) %> 
+  <ul>
+    <% @posts.each do |post| %>
+      <li class = 'post_container'>
+        <a href="/users/<%= @user.id %>/posts/<%= post.id %>" class = 'user_clickable'>
+          <h3>#<%= post[:id] %> <%= post[:title] %> </h3>
+          <p> <%= post[:text] %> </p>
+          <p class = 'post_counter' >Comments:<%= post[:comments_counter] %> Likes: <%= post[:likes_counter] %> </p>
+          <ul>
+            <% post.return_recent_comments.each do |comment| %>
+              <li class = 'comment_holder'>
+                <h5> <%= comment.author.name%></h5>
+                <p><%= comment.text%> </p>
+              </li>
+            <%end%>
+          </ul>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</div>
