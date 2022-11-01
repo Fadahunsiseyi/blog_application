@@ -11,6 +11,7 @@
     <h4> Bio </h4>
     <p><%= @user.bio %></p>
   </div>
+   <%= link_to "Add New Post", "/users/#{@user.id}/posts/new", {:class => "see_all_post"}%>
   <h4>Recent posts </h4>
     <% if @user.posts_counter > 0 %>
       <% @posts = Post.where(author_id: @user.id) %>

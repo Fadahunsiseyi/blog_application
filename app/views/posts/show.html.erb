@@ -7,12 +7,21 @@
     </div>
     <h3><%= @post.title %></h3>
     <p><%= @post.text %></p>
-    <p class = 'post_counter' >Comments:<%= @post[:comments_counter] %> Likes: <%= @post[:likes_counter] %> </p>
+    <p class = 'post_counter' >Comment:<%= @post[:comments_counter] %> Likes: <%= @post[:likes_counter] %> </p>
+        <div class="post_counter">
+      <%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |form| %>
+        <%= form.submit "Like this post" %>
+      <% end %>
+      <p class = 'post_counter' >
+        Comments:<%= @post[:comments_counter] %> Likes: <%= @post[:likes_counter] %>
+      </p>
+    </div>
+    <%= render partial: "create_comments",  local: { post: @post } %>
     <ul>
       <% @post.comments.each do |comment| %>
         <li class = 'comment_holder'></li>
-          <h5> <%= comment.author.name%></h5>
-          <p><%= comment.text%> </p>
+          <h5> <%= comment.author.name %></h5>
+          <p><%= comment[:text] %> </p>
         </li>
       <% end %>
     </ul>
