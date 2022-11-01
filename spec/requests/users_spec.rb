@@ -32,7 +32,7 @@ RSpec.describe 'Users', type: :request do
     end
 
     it 'body should includes correct placeholder text' do
-      expect(response.body).to include('HELLO RAILS show')
+      expect(response.body).to include('User Details')
     end
   end
 end

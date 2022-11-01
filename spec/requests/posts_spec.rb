@@ -25,6 +25,6 @@ RSpec.describe 'Users controller', type: :request do
 
     expect(response).to render_template(:show)
 
-    expect(response.body).to include('HELLO RAILS 2')
+    expect(response.body).to include('Post Details')
   end
 end
