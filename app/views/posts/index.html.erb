@@ -7,7 +7,6 @@
         <p class = 'post_counter'>Post :  <%= @user.posts_counter %></p>
       </div>
   </div>
-  <% @posts = Post.where(author_id: @user.id) %> 
   <ul>
     <% @posts.each do |post| %>
       <li class = 'post_container'>
@@ -16,7 +15,7 @@
           <p> <%= post[:text] %> </p>
           <p class = 'post_counter' >Comments:<%= post[:comments_counter] %> Likes: <%= post[:likes_counter] %> </p>
           <ul>
-            <% post.return_recent_comments.each do |comment| %>
+            <% post.return_recent_comments.includes(:author).each do |comment| %>
               <li class = 'comment_holder'>
                 <h5> <%= comment.author.name%></h5>
                 <p><%= comment.text%> </p>

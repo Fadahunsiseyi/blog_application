@@ -13,7 +13,7 @@ RSpec.describe 'Users controller', type: :request do
 
     expect(response).to render_template(:index)
 
-    expect(response.body).to include('HELLO RAILS index 2')
+    expect(response.body).to include('List of all Posts by Tom')
   end
 
   it 'renders a page for specific post' do
@@ -25,6 +25,6 @@ RSpec.describe 'Users controller', type: :request do
 
     expect(response).to render_template(:show)
 
-    expect(response.body).to include('HELLO RAILS 2')
+    expect(response.body).to include('Post Details')
   end
 end
