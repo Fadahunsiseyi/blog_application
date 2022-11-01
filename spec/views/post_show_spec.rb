@@ -21,5 +21,28 @@ RSpec.describe 'Renders the post show page', type: :feature do
     scenario 'shows the person who wrote the post' do
       expect(page).to have_content('John Carson')
     end
-
+  
+    it 'can see the username of each commentor.' do
+      expect(page).to have_content('John Carson')
+    end
+  
+    scenario 'displays number of comments' do
+      expect(page).to have_content(@comment.text)
+    end
+  
+    scenario 'displays number of likes' do
+      expect(page).to have_content('Likes: 0')
+    end
+  
+    scenario 'displays the content of the post' do
+      expect(page).to have_content(@first_post.text)
+    end
+  
+    scenario 'can see the comments of each commentor.' do
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+      expect(page).to have_content 'Nice post!!'
+    end
   end
