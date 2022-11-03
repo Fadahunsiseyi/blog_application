@@ -16,6 +16,23 @@ Rails.application.configure do
   # Show full error reports.
   config.consider_all_requests_local = true
 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "oluwaseyisamuel018@gmail.com",
+    password: "nsqgbhpplrcywugr", 
+    domain: "smtp.gmail.com",
+    openssl_verify_mode: "none",
+  }
+
+
   # Enable server timing
   config.server_timing = true
 
