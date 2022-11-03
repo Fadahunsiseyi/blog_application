@@ -13,6 +13,22 @@ Rails.application.configure do
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
 
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: "smtp.gmail.com",
+    port: 587,
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: "oluwaseyisamuel018@gmail.com",
+    password: "nsqgbhpplrcywugr", 
+    domain: "smtp.gmail.com",
+    openssl_verify_mode: "none",
+  }
+
   # Eager loading loads your whole application. When running a single test locally,
   # this probably isn't necessary. It's a good idea to do in a continuous integration
   # system, or in some way before deploying your code.
